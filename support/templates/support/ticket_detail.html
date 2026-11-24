@@ -1,0 +1,11 @@
+{% extends "base.html" %}{% block title %}Ticket #{{ ticket.pk }}{% endblock %}
+{% block content %}
+<div class="d-flex justify-content-between align-items-start mb-3"><div><h2>Ticket #{{ ticket.pk }} · {{ ticket.subject }}</h2><p class="text-muted">Created by {{ ticket.user.username }} on {{ ticket.created_at|date:"d M Y, H:i" }}</p></div><a href="{% url 'ticket_list' %}" class="btn btn-outline-secondary">Back</a></div>
+<div class="row g-3 mb-4"><div class="col-md-4"><div class="card p-3"><small class="text-muted">Status</small><strong>{{ ticket.status }}</strong></div></div><div class="col-md-4"><div class="card p-3"><small class="text-muted">Priority</small><strong>{{ ticket.priority }}</strong></div></div><div class="col-md-4"><div class="card p-3"><small class="text-muted">Assigned staff</small><strong>{% if ticket.assigned_to %}{{ ticket.assigned_to.user.username }}{% else %}Unassigned{% endif %}</strong></div></div></div>
+<div class="card p-4 mb-4"><h5>Issue description</h5><p class="mb-0">{{ ticket.description|linebreaksbr }}</p></div>
+<div class="card p-4 mb-4"><h4>Conversation</h4><div class="chat-list">
+{% for msg in messages_list %}<div class="chat-message"><div class="d-flex justify-content-between"><strong>{{ msg.user.username }}</strong><small class="text-muted">{{ msg.created_at|date:"d M Y, H:i" }}</small></div><p class="mb-0 mt-2">{{ msg.content|linebreaksbr }}</p></div>
+{% empty %}<p class="text-muted">No messages yet. Start the conversation below.</p>{% endfor %}
+</div><form method="post" class="mt-3">{% csrf_token %}<input type="hidden" name="action" value="send_message">{{ message_form.as_p }}<button class="btn btn-primary">Send Message</button></form></div>
+{% if is_staff %}<div class="card p-4"><h5>Update ticket status</h5><form method="post">{% csrf_token %}<input type="hidden" name="action" value="update_status">{{ status_form.as_p }}<button class="btn btn-outline-primary">Update Status</button></form></div>{% endif %}
+{% endblock %}

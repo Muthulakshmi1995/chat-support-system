@@ -1,0 +1,2 @@
+{% extends "base.html" %}{% block title %}New Ticket{% endblock %}
+{% block content %}<div class="form-card wide"><h2>Create a support ticket</h2><p class="text-muted">Our AI assistant will suggest a priority and department.</p><form method="post">{% csrf_token %}{{ form.as_p }}<button class="btn btn-primary">Submit Ticket</button> <a class="btn btn-outline-secondary" href="{% url 'ticket_list' %}">Cancel</a></form></div>{% endblock %}

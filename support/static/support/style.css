@@ -1,0 +1,18 @@
+body { background: #f4f6fb; color: #202638; min-height: 100vh; }
+.navbar-brand { letter-spacing: .3px; }
+.card, .form-card { border: 0; border-radius: 14px; box-shadow: 0 8px 28px rgba(26,39,68,.06); }
+.form-card { background: white; max-width: 480px; padding: 32px; margin: 35px auto; }
+.form-card.wide { max-width: 760px; }
+.form-card h2 { margin-bottom: 22px; }
+.form-card p { margin-bottom: 16px; }
+.form-card label { display: block; font-weight: 600; margin-bottom: 6px; }
+.form-card input, .form-card textarea, .form-card select,
+.card textarea, .card select { width: 100%; border: 1px solid #dce1ea; border-radius: 8px; padding: 10px 12px; }
+.helptext { display: block; color: #778096; font-size: .85rem; }
+.errorlist { color: #b42318; }
+.table th { color: #68738a; font-size: .82rem; text-transform: uppercase; letter-spacing: .04em; }
+.table td, .table th { padding: 15px 16px; vertical-align: middle; }
+.table a { color: #315bd6; text-decoration: none; font-weight: 600; }
+.chat-list { display: grid; gap: 12px; }
+.chat-message { background: #f5f7fb; border-radius: 10px; padding: 14px 16px; }
+footer { font-size: .85rem; }
